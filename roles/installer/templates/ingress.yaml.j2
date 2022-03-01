@@ -16,6 +16,11 @@ metadata:
     {{ ingress_annotations | indent(width=4) }}
 {% endif %}
 spec:
+{% if ingressclassname %}
+  ingressClassName: {{ ingressclassname }}
+{% else %}
+  ingressClassName: Nginx
+{% endif %}
   rules:
     - http:
         paths:
